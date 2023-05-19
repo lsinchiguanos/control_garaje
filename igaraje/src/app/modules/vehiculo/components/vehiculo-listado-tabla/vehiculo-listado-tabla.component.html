@@ -1,0 +1,48 @@
+<table class="table table-centered table-nowrap table-hover mb-5 nowrap" id="products-datatable">
+  <thead>
+    <tr>
+      <th class="text-center" style="width: 25px">#</th>
+      <th class="text-center" style="width: 250px">Razón Social</th>
+      <th class="text-center" style="width: 50px">Identificación</th>
+      <th class="text-center">Parroquía</th>
+      <!-- <th class="text-center" style="width: 50px">Estado</th> -->
+      <th class="table-action text-center">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- | slice:((currentPage|async) - 1) * (itemsPerPage|async):(currentPage|async) * (itemsPerPage|async) -->
+    <tr *ngFor="let cliente of bitacoralistado | paginate: { itemsPerPage: cantidad_items, currentPage: p }; index as i">
+      <td class="text-center">{{i + 1}}</td>
+      <td class="table-user">
+        <img src="assets/images/users/avatar-4.jpg" alt="table-user" class="me-2 rounded-circle">
+        {{ cliente.razon_social }}
+      </td>
+      <td class="text-center">{{ cliente.identificacion }}</td>
+      <td>{{ cliente.parroquia }}</td>
+      <!-- <td class="text-center">
+        <span class="badge badge-success-lighten">Active</span>
+      </td> -->
+      <td class="text-center">
+        <div class="dropdown">
+          <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <i class="mdi mdi-dots-horizontal"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a href="javascript:void(0);" class="dropdown-item">
+              <i class="mdi mdi-pencil"></i>
+              Editar
+            </a>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<pagination-controls
+  (pageChange)="p = $event"
+  class="pagination justify-content-center pagination-rounded mb-0"
+  previousLabel="Ant"
+  nextLabel="Sig"
+  [responsive]="true"></pagination-controls>

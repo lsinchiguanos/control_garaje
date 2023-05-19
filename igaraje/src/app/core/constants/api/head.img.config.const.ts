@@ -1,0 +1,7 @@
+import { environment as ENV } from 'environments/environment';
+export const configHeaderImage = {
+    'enctype': 'multipart/form-data',
+    'air-token': localStorage.getItem(ENV.ls) || '',
+    'Cache-Control': 'no-cache',
+    Pragma: 'no-cache'
+}

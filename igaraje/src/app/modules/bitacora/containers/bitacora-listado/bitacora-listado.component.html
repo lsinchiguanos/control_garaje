@@ -1,0 +1,57 @@
+<!-- start page title -->
+<app-titulo titulo="Bitacora"></app-titulo>
+<!-- end page title -->
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <div class="row mb-2">
+          <div class="col-sm-4">
+            <a role="button" class="btn btn-danger mb-2">
+              <i class="mdi mdi-plus-circle me-2"></i>
+              Nuevo Cliente
+            </a>
+          </div>
+          <div class="col-sm-8">
+            <div class="text-sm-end">
+              <button type="button" class="btn btn-success mb-2 me-1"><i class="mdi mdi-cog"></i></button>
+              <button type="button" class="btn btn-light mb-2 me-1">Import</button>
+              <button type="button" class="btn btn-light mb-2">Export</button>
+            </div>
+          </div><!-- end col-->
+        </div>
+
+        <div class="row mb-2">
+          <div class="col-lg-1">
+            <div class="mb-3">
+              <select class="form-select" id="numero_paginacion" (change)="onPageSizeChanged($event.target)">
+                <option [ngValue]="25" selected>25</option>
+                <option [ngValue]="35">35</option>
+                <option [ngValue]="45">45</option>
+                <option [ngValue]="55">55</option>
+                <option [ngValue]="65">65</option>
+                <option [ngValue]="75">75</option>
+                <option [ngValue]="100">100</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <input type="text" id="buscardor" class="form-control" placeholder="Buscar..." (keyup)="buscarClientes($event.target)">
+            </div>
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <app-bitacora-listado-tabla
+            [bitacoralistado]="listado_bitacora"
+            [cantidad_items]="_cantidad"
+            ></app-bitacora-listado-tabla>
+        </div>
+
+      </div> <!-- end card-body-->
+    </div> <!-- end card-->
+  </div> <!-- end col -->
+</div>
+<!-- end row -->
